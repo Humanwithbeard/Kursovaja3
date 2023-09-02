@@ -1,6 +1,16 @@
 import json
 
 
+def mask_card_number(card_number):
+    masked_number = card_number[:8] + ' ' + '*' * 6 + ' ' + card_number[14:]
+    return masked_number
+
+
+def mask_account_number(account_number):
+    masked_number = '**' + account_number[-6:-4] + ' ' + account_number[-4:]
+    return masked_number
+
+
 def last_five_exe():
     with open('operations.json', 'r', encoding='utf-8') as json_file:
         data = json.load(json_file)
@@ -11,14 +21,6 @@ def last_five_exe():
         reverse=True
     )
     last_five_operations = executed_operations[:5]
-
-    def mask_card_number(card_number):
-        masked_number = card_number[:6] + ' ' + card_number[6:10] + '** **** ' + card_number[-4:]
-        return masked_number
-
-    def mask_account_number(account_number):
-        masked_number = '**' + account_number[-6:-4] + ' ' + account_number[-4:]
-        return masked_number
 
     for operation in last_five_operations:
         date = operation['date'].split('T')[0]
@@ -32,5 +34,5 @@ def last_five_exe():
         print(f'{from_account} -> {to_account}')
         print(f'{amount} {currency}\n')
 
-last_five_exe()
 
+last_five_exe()
