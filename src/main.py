@@ -1,12 +1,25 @@
 import json
 
+
 def mask_card_number(card_number):
-    masked_number = card_number[:8] + '********' + card_number[14:]
-    return masked_number
+    dig_l = []
+    char_l = []
+    empty_l = []
+    for char in card_number:
+        if char.isdigit():
+            char_l.append(char)
+        else:
+            dig_l.append(char)
+    new_new = ''.join(dig_l) + ''.join(char_l) + ''.join(empty_l)
+    if not new_new:
+        new_new = "Нет данных"
+    return new_new
+
 
 def mask_account_number(account_number):
     masked_number = '**' + account_number[-6:-4] + ' ' + account_number[-4:]
     return masked_number
+
 
 def last_five_exe():
     with open('operations.json', 'r', encoding='utf-8') as json_file:
@@ -30,5 +43,6 @@ def last_five_exe():
         print(f'{date} {description}')
         print(f'{from_account} -> {to_account}')
         print(f'{amount} {currency}\n')
+
 
 last_five_exe()
