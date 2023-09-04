@@ -1,9 +1,7 @@
 import json
-import pytest
 from src.main import mask_card_number
 
 
-@pytest.fixture
 def json_data():
     with open('operations.json', 'r') as file:
         data = json.load(file)
