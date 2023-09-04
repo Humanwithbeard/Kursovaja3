@@ -10,8 +10,11 @@ def mask_card_number(card_number):
             char_l.append(char)
         else:
             dig_l.append(char)
-    new_new = ''.join(dig_l) + ''.join(char_l) + ''.join(empty_l)
-    if not new_new:
+    if char_l:
+        new_new = ''.join(dig_l) + ''.join(char_l)[:4] + ' ' + ''.join(char_l)[4:6] + '** **** ' + ''.join(char_l)[
+-4:] + ''.join(
+            empty_l)
+    else:
         new_new = "Нет данных"
     return new_new
 

@@ -11,4 +11,4 @@ def json_data():
 
 
 def test_mask_card_number():
-    assert mask_card_number("Счет 38611439522855669794") == "Счет 38611439522855669794"
+    assert mask_card_number("Счет 38611439522855669794") == "Счет 3861 14** **** 9794"
