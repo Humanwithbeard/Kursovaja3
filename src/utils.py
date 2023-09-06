@@ -15,21 +15,12 @@ def mask_card_number(card_number):
     """
     Маскировка кода карточки (цифры в звездочки)
     """
-    dig_l = []
-    char_l = []
-    empty_l = []
-    for char in card_number:
-        if char.isdigit():
-            char_l.append(char)
-        else:
-            dig_l.append(char)
-    if char_l:
-        new_new = ''.join(dig_l) + ''.join(char_l)[:4] + ' ' + ''.join(char_l)[4:6] + '** **** ' + ''.join(char_l)[
-                                                                                                   -4:] + ''.join(
-            empty_l)
+    digits = ''.join(char for char in card_number if char.isdigit())
+    if len(digits) >= 16:
+        masked_number = digits[:4] + ' ' + digits[4:6] + '** **** ' + digits[-4:]
     else:
-        new_new = "Нет данных"
-    return new_new
+        masked_number = "Нет данных"
+    return masked_number
 
 
 def mask_account_number(account_number):
