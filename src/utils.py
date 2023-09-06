@@ -42,7 +42,7 @@ def format_date(date_str):
 def process_executed_operations(data):
     """
     Обработка списка и вывод только выполненых операций.
-    Так же сортировка даты
+    Так же сортировка даты.
     """
     executed_operations = sorted(
         (operation for operation in data if operation.get('state') == 'EXECUTED'),
