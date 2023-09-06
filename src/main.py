@@ -1,13 +1,11 @@
-import json
-from src.utils import process_executed_operations, print_last_five_operations
+from src.utils import process_executed_operations, print_last_five_operations, load_data_from_json
 
 
 def main():
     """
-    Основная функция. Извлекает инфу из файла operations.json и собственно, выдает результат
+    Основная функция. Выдает результат
     """
-    with open('operations.json', 'r', encoding='utf-8') as json_file:
-        data = json.load(json_file)
+    data = load_data_from_json()
 
     last_five_operations = process_executed_operations(data)
     print_last_five_operations(last_five_operations)

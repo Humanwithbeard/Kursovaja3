@@ -1,4 +1,14 @@
 from datetime import datetime
+import json
+
+
+def load_data_from_json():
+    """
+    Извлекает инфу из файла operations.json
+    """
+    with open('operations.json', 'r', encoding='utf-8') as json_file:
+        data = json.load(json_file)
+    return data
 
 
 def mask_card_number(card_number):
